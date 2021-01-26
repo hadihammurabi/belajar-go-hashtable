@@ -2,23 +2,26 @@ package main
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/hadihammurabi/belajar-go-hashtable/linkedlist"
+
+	"github.com/hadihammurabi/belajar-go-hashtable/hashtable"
 )
 
 func main() {
-	// fmt.Println("Not implemented, run command bellow:")
-	// fmt.Println("go test ./...")
-
-	ll := linkedlist.NewLinkedList()
-
-	size := 5
-	for size > 0 {
-		ll.Add(&linkedlist.Node{Name: fmt.Sprintf("%d", size), Data: size + 1})
-		size--
+	table := hashtable.NewHashTable()
+	count := 1000
+	for i := 0; i < count; i++ {
+		table.Add(&linkedlist.Node{Name: fmt.Sprint(i), Data: i})
 	}
 
-	ll.Delete("4")
-	// fmt.Println(ll.Exists("2"))
-	ll.Show()
+	start := time.Now()
+	fmt.Println(table.Exists("78"))
+	fmt.Println(table.Exists("68"))
+	fmt.Println(table.Exists("4778"))
+	fmt.Println(table.Exists("89"))
+	fmt.Println(table.Exists("2929"))
+
+	fmt.Printf("%s \n\n", time.Since(start))
 }
