@@ -42,6 +42,20 @@ func (h *HashTable) Add(node *linkedlist.Node) {
 	h.container[idx].Add(node)
 }
 
+// Get func
+func (h *HashTable) Get(name string) interface{} {
+	idx := index(hash(name))
+	container := h.container[idx]
+	position := uint(container.GetPosition(name))
+	node := container.GetAt(position)
+
+	if node != nil {
+		return node.Data
+	}
+
+	return nil
+}
+
 // Exists func
 func (h HashTable) Exists(name string) bool {
 	idx := index(hash(name))
